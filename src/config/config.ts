@@ -1,17 +1,22 @@
 require('dotenv').config();
 
-const DB_USER : string = process.env.DB_USER!
-const DB_PASS : string = process.env.DB_PASS!
-const DB_HOST : string  = process.env.DB_HOST!
-const DB_PORT : number = parseInt(process.env.DB_PORT!)
-const DB_NAME : string  = process.env.DB_NAME!
+const UNAME: string = process.env.UNAME!
+const PASS: string = process.env.PASS!
+const JWT_SECRET: string = process.env.JWT_SECRET!
 const PORT: number = parseInt(process.env.PORT!)
+const REGION: string = process.env.REGION!;
+const SECRET_ACCESS_KEY : string = process.env.SECRET_ACCESS_KEY !;
+const ACCESS_KEY : string = process.env.ACCESS_KEY!;
+const VERIFIED_EMAIL: string = process.env.VERIFIED_MAIL!;
+
 
 export {
-  DB_USER,
-  DB_PASS,
-  DB_HOST,
-  DB_PORT,
-  DB_NAME,
-  PORT
+  UNAME,
+  PASS,
+  JWT_SECRET,
+  PORT,
+  REGION, 
+  SECRET_ACCESS_KEY, 
+  ACCESS_KEY,
+  VERIFIED_EMAIL
 }
