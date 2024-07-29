@@ -1,21 +1,17 @@
-import * as AWS from "@aws-sdk/client-ses";
+import aws from "aws-sdk";
 import nodemailer from "nodemailer";
 import { ACCESS_KEY, REGION, SECRET_ACCESS_KEY } from "./config";
 
-const ses = new AWS.SES({
-  apiVersion: '2010-12-01',
-  region: REGION,
-  credentials: {
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY,
-  },
+aws.config.update({
+  accessKeyId: ACCESS_KEY,
+  secretAccessKey: SECRET_ACCESS_KEY,
+  region: REGION
 });
 
-export const transporter = nodemailer.createTransport({
-  SES: { ses, aws: AWS },
+const transporter = nodemailer.createTransport({
+  SES: new aws.SES({ apiVersion: '2010-12-01' })
 });
 
-
-export default {
+export {
   transporter
 };

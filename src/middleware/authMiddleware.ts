@@ -6,12 +6,12 @@ import { errors } from "../status";
 const AuthenticateUser = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
-  if(token){
+  if (token) {
     jwt.verify(token, JWT_SECRET, (err, user) => {
-      if(!err){
-        req.body = {...req.body, user}
+      if (!err) {
+        req.body = { ...req.body, user }
         return next();
-      }else{
+      } else {
         return res.status(errors.unauth.code).send(errors.unauth.mess)
       }
     })

@@ -6,7 +6,7 @@ const router = express.Router();
 
 const BASE_ROUTE = '/user';
 
-router.get( '/test', async ( _ , res: Response ) => {
+router.get('/test', async (_, res: Response) => {
   return res.status(sucess.code).send(sucess.mess);
 });
 

@@ -6,6 +6,10 @@ const errors = {
   "unauth" : {
     code: 401,
     mess: "unaithorized"
+  },
+  "email" : {
+    code: 404,
+    mess: "email-not-sent"
   }
 }
 

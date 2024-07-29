@@ -13,5 +13,5 @@ const mailBody = Joi.object({
 
 export {
   loginBody,
-  mailBody 
+  mailBody
 }
