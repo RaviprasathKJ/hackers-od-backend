@@ -18,4 +18,7 @@ export {
   SECRET_ACCESS_KEY, 
   ACCESS_KEY,
   VERIFIED_EMAIL
-}
+} 
+export { default as pool } from './db';
+export {Connect} from './db';
+
