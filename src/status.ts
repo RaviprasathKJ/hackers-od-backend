@@ -5,7 +5,7 @@ const errors = {
   },
   "unauth" : {
     code: 401,
-    mess: "unaithorized"
+    mess: "unauthorized"
   },
   "email" : {
     code: 404,

@@ -4,7 +4,7 @@ import pool from '../config/db';
 
 const sendRequest = async (req: Request, res: Response) => {
   const odDetailsArray = req.body;
-
+  console.log(odDetailsArray);
   if (!Array.isArray(odDetailsArray) || odDetailsArray.length === 0) {
     return res.status(400).send('Invalid request: odDetailsArray should be a non-empty array.');
   }

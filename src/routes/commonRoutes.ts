@@ -1,8 +1,17 @@
 import express from 'express';
 import { commonControllers }  from '../controllers';
+import { AuthenticateUser } from '../middleware/authMiddleware';
 
 const BASE_ROUTE = '/api';
 const router = express.Router();
+
+// Route for login
+router.post('/login', commonControllers.login);
+
+// Route for verfiyToken  
+router.post('/verifyToken', commonControllers.verifyToken);
+
+router.use(AuthenticateUser);
 
 // Route to get all students
 router.get('/students', commonControllers.getAllStudents);
@@ -24,6 +33,7 @@ router.get('/rejected-students/today', commonControllers.getRejectedStudentsToda
 
 // Route to get pending students today
 router.get('/pending-students/today', commonControllers.getPendingStudentsToday);
+
 
 export default {
   BASE_ROUTE,

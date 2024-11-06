@@ -24,9 +24,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(express.json());
-app.get("/api", (_, res) => {
-  res.send("Welcome to the OD");
-});
+
 app.use(USER_BR, userRoute);
 app.use(COMMON_BR, COMMON_ROUTER);
 app.use(HOD_BR, HOD_ROUTER);
