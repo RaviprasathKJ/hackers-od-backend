@@ -2,10 +2,24 @@ import { Request, Response } from 'express';
 import { teamleadQueries } from '../queries';
 import pool from '../config/db';
 
+interface ODDetails {
+  user_id: string;
+  date: string;
+  reason: string;
+  request_by: string;
+  status: string;
+  from_time: string;
+  to_time: string;
+}
+
 const sendRequest = async (req: Request, res: Response) => {
-  const odDetailsArray = req.body;
-  console.log(odDetailsArray);
-  if (!Array.isArray(odDetailsArray) || odDetailsArray.length === 0) {
+  // Convert the object with numeric keys into an array of objects
+  const odDetailsArray: ODDetails[] = Object.values(req.body).filter(
+    (item): item is ODDetails => item !== null && typeof item === 'object' && 'user_id' in item
+  );
+
+  console.log(odDetailsArray.length, odDetailsArray);
+  if (odDetailsArray.length === 0) {
     return res.status(400).send('Invalid request: odDetailsArray should be a non-empty array.');
   }
 
@@ -14,7 +28,7 @@ const sendRequest = async (req: Request, res: Response) => {
   try {
     await client.query('BEGIN');
 
-    const values = odDetailsArray.flatMap(details => [
+    const values = odDetailsArray.flatMap((details) => [
       details.user_id,
       details.date,
       details.reason,
@@ -41,5 +55,4 @@ const sendRequest = async (req: Request, res: Response) => {
   }
 };
 
-export default { sendRequest } ;
-
+export default { sendRequest };
